@@ -14,11 +14,22 @@
  		<link rel="stylesheet" type="text/css" href="style.css ">
  	</head>
  	<body>
- 		<table id = robos>
-      <tr>hello</tr>
-      <td>how are you</td>
-      <td>fine, thank you</td>
-      </table>
+ 		{{#users}}
+    <img src='{{avatar}}'>
+    <h1>{{name}}</h1>
+    <ul>
+      <li>
+        {{job}}
+        {{company}}
+      </li>
+    </ul>
+    {{#university}}
+    {{/university}}
+    {{^university}}
+    No University
+    {{/university}}
+    {{/users}}
+
  	<script type="text/javascript" src=" "></script>
  	</body>
  </html>

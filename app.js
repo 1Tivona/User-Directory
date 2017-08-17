@@ -6,6 +6,7 @@ const mustache = require('mustache-express');
 const form = require('express-form');
 const bodyParser = require('body-parser')
 const field = form.field;
+const info = require('./data.js')
 
 
 app.engine('mustache', mustache());
@@ -14,7 +15,7 @@ app.set('view engine', 'mustache')
 app.use(bodyParser());
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/index.html'));
+  res.render('index', info);
 });
 
 app.get('/', function (req, res) {
@@ -22,14 +23,14 @@ app.get('/', function (req, res) {
 });
 
 app.post('/data.js', function (req, res){
-  res.render('module.exports.users')
+  res.send('This is where the pictures of all robots go')
 });
 
 
-app.get('/data.js', function(req, res){
-  res.sendFile(path.join(__dirname+'/style.css'));
-  // res.send('This is where the collection of robots go')
-});
+// app.get('/data.js', function(req, res){
+//   res.sendFile(path.join(__dirname+'/style.css'));
+//   // res.send('This is where the collection of robots go')
+// });
 
 app.get('/public', function(req, res){
   res.send('This is where the individual information for the robots go')
@@ -37,4 +38,5 @@ app.get('/public', function(req, res){
 
 app.listen(3000, function () {
   console.log('Successfully started express application!')
+  console.log(info)
 });
